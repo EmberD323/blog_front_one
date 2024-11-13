@@ -1,20 +1,15 @@
-
-
 import { useState } from "react";
-
+import NavBar from "./components/NavBar";
+import "./styles/App.css"
+import { Link,Outlet } from "react-router-dom";
 const App = () => {
-  const [heading, setHeading] = useState("Magnificent Monkeys");
-
-  const clickHandler = () => {
-    setHeading("Radical Rhinos");
-  };
+  //get posts from api
+  const [posts, setPosts] = useState(1);
 
   return (
     <>
-      <button type="button" onClick={clickHandler}>
-        Click Me
-      </button>
-      <h1>{heading}</h1>
+      <NavBar></NavBar>
+      <Outlet context={[posts,setPosts]}/>
     </>
   );
 };
