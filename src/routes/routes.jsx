@@ -1,5 +1,5 @@
 import App from '../App.jsx';
-import OtherPage from '../components/Otherpage.jsx';
+import PostPage from '../components/Postpage.jsx';
 import HomePage from '../components/Homepage.jsx';
 
 const routes = [
@@ -9,7 +9,7 @@ const routes = [
     children:[
       { index: true, element: <HomePage /> },
       {path: "homepage",element: <HomePage/>},
-      {path: "otherpage",element: <OtherPage />},
+      {path: "otherpage/:id",element: <PostPage />},
       
     ]
   },
