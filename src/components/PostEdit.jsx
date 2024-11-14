@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
+import Errors from "./Errors"
+
 
 export default function PostEdit (){
-    const [posts,setPosts,token,setToken] = useOutletContext();
+    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
     const { id } = useParams();
     const thisPost = (posts.filter((post) => post.id == id))[0];
-    console.log(thisPost)
-    const[title,setTitle] = useState(thisPost.title)
-    const[text,setText] = useState(thisPost.text)
-    const[published,setPublished] = useState(thisPost.published)
+    const[title,setTitle] = useState(thisPost.title);
+    const[text,setText] = useState(thisPost.text);
+    const[published,setPublished] = useState(thisPost.published);
+    const[formErrors,setFormErrors] = useState(null);
+
 
     const navigate = useNavigate()
     function handleCancel(){
@@ -16,29 +19,25 @@ export default function PostEdit (){
     }
     async function handleSubmit(e){
         e.preventDefault();
-        //post to databas
-        //include method type
+        //post to database
+        const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id, {
+            method: "PUT",
+            mode:"cors",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": "Bearer " +token
+            },
+            body: JSON.stringify({title,text,published}),
+        }); 
+        if(response.status != 200){//if theres errors
+            const errors = await response.json();
+            setFormErrors(errors)
+        }
+        else{//reload posts and leave edit page
+            setEdit(!edit);
+            navigate('../postpage/'+id);
+        }
 
-        const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id,{
-              method: "PUT",
-              mode:"cors",
-              body: JSON.stringify({title,text,published})
-        })
-        console.log(response)
- 
-
-//making a post
-// const request = new Request("/api/posts", {
-//   method: "POST",
-//   body: JSON.stringify({ username: "example" }),
-// });
-
-// const response1 = await fetch(request);
-// console.log(response1.status);
-  //fetch users
-
-        // navigate to postpage
-        //navigate('../postpage/'+id);
     }
     function handleTitleChange(e){
         setTitle(e.target.value)
@@ -71,6 +70,7 @@ export default function PostEdit (){
                 <button type="submit" >Submit</button>
                 <button type="button"onClick={handleCancel}>Cancel Edit</button>
             </form>
+            <Errors errors={formErrors}/>
 
         </div>
 

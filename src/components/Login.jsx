@@ -5,7 +5,7 @@ export default function Login (){
     const[username,setUsername] = useState(null);
     const[password,setPassword] = useState(null);
     const[formErrors,setFormErrors] = useState(null);
-    const [posts,setPosts,token,setToken] = useOutletContext();
+    const [posts,setPosts,token,setToken,,edit,setEdit] = useOutletContext();
 
 
     function handleUsernameChange(e){
@@ -24,18 +24,27 @@ export default function Login (){
               headers: {
                 "Content-Type": "application/json"
                 },
-              body: JSON.stringify({username,password }),
+              body: JSON.stringify({username,password}),
             });        
             if(response.status != 200){
                 const json = await response.json();
+                console.log(json.errors)
                 setFormErrors(json.errors)
             }else{ 
                 const json = await response.json();
                 const thisToken = json.token;
-                console.log(thisToken)
-                setToken(thisToken)
-                localStorage.setItem("token", thisToken);
-                navigate('../homepage');
+                const user = json.user;
+                console.log(user);
+                if(user.author != true){
+                    let error=[{msg:"You must have a author account to log in"}]
+                    setFormErrors(error)
+                }
+                else{
+                    setToken(thisToken)
+                    localStorage.setItem("token", thisToken);
+                    navigate('../homepage');
+                }
+                
             }
           } catch (er) {
             console.error(er);

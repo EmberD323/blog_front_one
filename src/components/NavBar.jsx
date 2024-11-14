@@ -4,10 +4,10 @@ function NavBar({token,setToken}) {
     const navigate = useNavigate()
     function handleLogout(){
         setToken(null);
-        localStorage.setItem("token", null);
+        localStorage.removeItem("token");
         navigate('../');
     }
-    if(token == null){
+    if(typeof token == "object"){
         return (
             <div className="NavBar">
                 <h1 className="heading">Blog Name</h1>

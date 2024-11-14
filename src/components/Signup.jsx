@@ -45,7 +45,7 @@ export default function SignUp (){
                 setFormErrors(json.errors)
                 
             }else{ 
-                navigate('../homepage');
+                navigate('../login');
             }
           } catch (er) {
             console.error(er);
