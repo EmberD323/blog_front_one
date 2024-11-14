@@ -6,7 +6,7 @@ function NavBar() {
             <h1 className="heading">Blog Name</h1>
             <Link to="homepage">Home Page</Link>
             <div className="links">
-                <a href="">Log in</a>
+                <Link to="login">Log in</Link>
                 <Link to="signup">Sign up</Link>
             </div>
         </div>

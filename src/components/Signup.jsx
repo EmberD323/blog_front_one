@@ -29,7 +29,7 @@ export default function SignUp (){
         setAuthor(e.target.value)
     }
     const navigate = useNavigate()
-    async function handleSubmit2(e){
+    async function handleSubmit(e){
         e.preventDefault();
         try {
             const response = await fetch("https://blog-api-backend-59l7.onrender.com/signup", {
@@ -56,7 +56,7 @@ export default function SignUp (){
     return (
         <div className="content">
             <h2>Sign up</h2>
-            <form onSubmit={handleSubmit2}>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="first_name">First Name</label>
                 <input type="text" name="first_name" id="first_name" value={first_name} onChange={handleFirstNameChange} required/>
                 <label htmlFor="last_name">Last Name</label>
