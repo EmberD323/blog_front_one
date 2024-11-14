@@ -1,16 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate} from "react-router-dom";
 
-function NavBar() {
-    return (
-        <div className="NavBar">
-            <h1 className="heading">Blog Name</h1>
-            <Link to="homepage">Home Page</Link>
-            <div className="links">
-                <Link to="login">Log in</Link>
-                <Link to="signup">Sign up</Link>
+function NavBar({token,setToken}) {
+    const navigate = useNavigate()
+    function handleLogout(){
+        setToken(null);
+        localStorage.setItem("token", null);
+        navigate('../');
+    }
+    if(token == null){
+        return (
+            <div className="NavBar">
+                <h1 className="heading">Blog Name</h1>
+                <Link to="homepage">Home Page</Link>
+                <div className="links">
+                    <Link to="login">Log in</Link>
+                    <Link to="signup">Sign up</Link>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    else{
+        return(
+            <div className="NavBar">
+                <h1 className="heading">Blog Name</h1>
+                <Link to="homepage">Home Page</Link>
+                <div className="links">
+                    <div onClick={handleLogout}>Log out</div>
+                </div>
+            </div>
+        )
+        
+
+    }
 }
 
 export default NavBar;

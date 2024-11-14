@@ -3,7 +3,7 @@ import { useOutletContext,useParams,useNavigate } from "react-router-dom";
 
 
 export default function PostPage (){
-    const [posts,setPosts] = useOutletContext();
+    const [posts,setPosts,token,setToken] = useOutletContext();
     const { id } = useParams();
     const thisPost = (posts.filter((post) => post.id == id))[0];
     const dateTime = new Date((Date.parse(thisPost.createdAt)))

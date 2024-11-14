@@ -8,6 +8,8 @@ const App = () => {
   const [posts,setPosts]=useState(null);
   const [error,setError]=useState(null);
   const [loading,setLoading] = useState(true);
+  const initalToken = localStorage.getItem("token");
+  const [token,setToken] = useState(initalToken);
   
   useEffect(()=>{
     fetch("https://blog-api-backend-59l7.onrender.com/posts",{
@@ -23,8 +25,8 @@ const App = () => {
   if(loading) return <p>Loading</p>
   return (
     <>
-      <NavBar></NavBar>
-      <Outlet context={[posts,setPosts]}/>
+      <NavBar token={token} setToken={setToken}></NavBar>
+      <Outlet context={[posts,setPosts,token,setToken]}/>
     </>
   );
 };

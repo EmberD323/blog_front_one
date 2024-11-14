@@ -5,6 +5,8 @@ export default function Login (){
     const[username,setUsername] = useState(null);
     const[password,setPassword] = useState(null);
     const[formErrors,setFormErrors] = useState(null);
+    const [posts,setPosts,token,setToken] = useOutletContext();
+
 
     function handleUsernameChange(e){
         setUsername(e.target.value)
@@ -29,8 +31,10 @@ export default function Login (){
                 setFormErrors(json.errors)
             }else{ 
                 const json = await response.json();
-                const token = json.token;
-                localStorage.setItem("token", token);
+                const thisToken = json.token;
+                console.log(thisToken)
+                setToken(thisToken)
+                localStorage.setItem("token", thisToken);
                 navigate('../homepage');
             }
           } catch (er) {

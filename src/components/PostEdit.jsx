@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
 
 export default function PostEdit (){
-    const [posts,setPosts] = useOutletContext();
+    const [posts,setPosts,token,setToken] = useOutletContext();
     const { id } = useParams();
     const thisPost = (posts.filter((post) => post.id == id))[0];
     console.log(thisPost)
