@@ -20,6 +20,8 @@ export default function PostEdit (){
     async function handleSubmit(e){
         e.preventDefault();
         //post to database
+        console.log(typeof published)
+        console.log(published)
         const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id, {
             method: "PUT",
             mode:"cors",
@@ -27,7 +29,7 @@ export default function PostEdit (){
               "Content-Type": "application/json",
               "authorization": "Bearer " +token
             },
-            body: JSON.stringify({title,text,published}),
+            body: JSON.stringify({title,text,publish:published}),
         }); 
         if(response.status != 200){//if theres errors
             const errors = await response.json();

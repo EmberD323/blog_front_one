@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useOutletContext,useParams,useNavigate } from "react-router-dom";
 
 export default function PostPage (){
-    const [posts,setPosts,token,setToken,,edit,setEdit] = useOutletContext();
+    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
     const { id } = useParams();
     const thisPost = (posts.filter((post) => post.id == id))[0];
     const dateTime = new Date((Date.parse(thisPost.createdAt)))
@@ -31,6 +31,28 @@ export default function PostPage (){
             console.log(response)
         }
     }
+    async function handlePostPublish(){
+
+        const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id, {
+            method: "PUT",
+            mode:"cors",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": "Bearer " +token
+            },
+            body: JSON.stringify({title:thisPost.title,text:thisPost.text,publish:"true"}),
+        }); 
+        if(response.status != 200){//if theres errors
+            const errors = await response.json();
+            console.log(errors)
+        }
+        else{//reload posts and leave edit page
+            setEdit(!edit);
+            navigate('../postpage/'+id);
+        }
+
+        
+    }
     if(typeof token == "object"){
         return (
             <div>
@@ -40,6 +62,20 @@ export default function PostPage (){
                 <div className="date">Created: {dayMonthYear} @ {time}</div>
                 <div className="title">Text:{thisPost.text}</div>
             </div>
+        )
+    }
+    else if(thisPost.published == true){
+        return(
+        <div>
+            <h2 className="title">Title:{thisPost.title}</h2>
+            <div className="imgPlaceholder">Image Placeholder</div>
+            <div className="author">Authorid(need name - todo):{thisPost.userId}</div>
+            <div className="date">Created: {dayMonthYear} @ {time}</div>
+            <div className="published">Published: {String(thisPost.published)}</div>
+            <div className="title">Text:{thisPost.text}</div>
+            <button onClick={handlePostEdit}>Edit</button>
+            <button onClick={handlePostDelete}>Delete</button>
+        </div>
         )
     }
     return (
@@ -52,7 +88,7 @@ export default function PostPage (){
             <div className="title">Text:{thisPost.text}</div>
             <button onClick={handlePostEdit}>Edit</button>
             <button onClick={handlePostDelete}>Delete</button>
-            <button>Publish</button>
+            <button onClick={handlePostPublish}>Publish</button>
         </div>
     
     )
