@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useOutletContext,useParams,useNavigate } from "react-router-dom";
 
-
 export default function PostPage (){
     const [posts,setPosts,token,setToken,,edit,setEdit] = useOutletContext();
     const { id } = useParams();
@@ -10,11 +9,27 @@ export default function PostPage (){
     const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
     const time = dateTime.getHours()+":"+dateTime.getMinutes()
     const navigate = useNavigate()
-    //current: edit button. on click pop up form 
     async function handlePostEdit(){
         //navigate to edit
         navigate('../postedit/'+id);
         
+    }
+    async function handlePostDelete(){
+        const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id, {
+            method: "DELETE",
+            mode:"cors",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": "Bearer " +token
+            },
+        }); 
+        if(response.status == 200){//succesful
+            setEdit(!edit);
+            navigate('../homepage');
+        }
+        else{
+            console.log(response)
+        }
     }
     if(typeof token == "object"){
         return (
@@ -35,9 +50,8 @@ export default function PostPage (){
             <div className="date">Created: {dayMonthYear} @ {time}</div>
             <div className="published">Published: {String(thisPost.published)}</div>
             <div className="title">Text:{thisPost.text}</div>
-
             <button onClick={handlePostEdit}>Edit</button>
-            <button>Delete</button>
+            <button onClick={handlePostDelete}>Delete</button>
             <button>Publish</button>
         </div>
     
