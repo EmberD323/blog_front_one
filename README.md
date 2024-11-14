@@ -11,3 +11,5 @@ Currently, two official plugins are available:
 
 1)npm install
 2)npm run dev http://localhost:5173/
+
+# this is authors front end - full access

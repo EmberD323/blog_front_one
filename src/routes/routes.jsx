@@ -1,6 +1,10 @@
 import App from '../App.jsx';
 import PostPage from '../components/Postpage.jsx';
 import HomePage from '../components/Homepage.jsx';
+import PostEdit from '../components/PostEdit.jsx';
+import Signup from '../components/Signup.jsx';
+
+
 
 const routes = [
   {
@@ -9,7 +13,9 @@ const routes = [
     children:[
       { index: true, element: <HomePage /> },
       {path: "homepage",element: <HomePage/>},
-      {path: "otherpage/:id",element: <PostPage />},
+      {path: "signup",element: <Signup/>},
+      {path: "postpage/:id",element: <PostPage />},
+      {path: "postedit/:id",element: <PostEdit />},
       
     ]
   },

@@ -7,7 +7,7 @@ function NavBar() {
             <Link to="homepage">Home Page</Link>
             <div className="links">
                 <a href="">Log in</a>
-                <a href="">Sign up</a>
+                <Link to="signup">Sign up</Link>
             </div>
         </div>
     )

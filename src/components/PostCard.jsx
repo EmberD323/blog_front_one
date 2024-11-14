@@ -7,7 +7,7 @@ export default function PostCard ({post}){
     const value = crypto.randomUUID()
     return (
         <li key={value}>
-            <Link to={`../otherpage/${post.id}`}>
+            <Link to={`../postpage/${post.id}`}>
                 <div className="title">Title:{post.title}</div>
                 <div className="author">Authorid(need name - todo):{post.userId}</div>
                 <div className="date">Created: {dayMonthYear}</div>
