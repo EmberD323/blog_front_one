@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
 import Errors from "../Errors"
 import Login from '../Users/Login.jsx';
@@ -55,13 +55,17 @@ export default function PostEdit (){
         )
     }
     return (
-        <div className="content">
+        <div className="postEdit">
             <h2>Edit Post</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" id="title" value={title} onChange={handleTitleChange}/>
-                <label htmlFor="text">Text</label>
-                <textarea name="text" id="text" value={text} onChange={handleTextChange}/>
+                <div className="title">
+                    <label htmlFor="title">Title</label>
+                    <input type="text" name="title" id="title" value={title} onChange={handleTitleChange}/>
+                </div>
+                <div className="text">
+                    <label htmlFor="text">Text</label>
+                    <textarea name="text" id="text" value={text} onChange={handleTextChange}/>
+                </div>
                 <fieldset>
                     <legend>Publish on submit? </legend>
                     <div>
@@ -73,14 +77,13 @@ export default function PostEdit (){
                         <label htmlFor="false">No</label>
                     </div>
                 </fieldset>
-                <button type="submit" >Submit</button>
-                <button type="button"onClick={handleCancel}>Cancel Edit</button>
+                <div className="buttons">
+                    <button type="submit" >Submit</button>
+                    <button type="button"onClick={handleCancel}>Cancel Edit</button>
+                </div>
             </form>
             <Errors errors={formErrors}/>
-
         </div>
-
-    
     )
 }
 

@@ -134,3 +134,19 @@ ul{
   display: flex;
   gap:10px;
 }
+.createPost>form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:20px;
+}
+.createPost>form>.title,.createPost>form>.text{
+  display: flex;
+  gap:5px;
+}
+input#title,textarea{
+  width: 500px;
+}
+.createPost>form>.text>textarea{
+  height: 500px;
+}

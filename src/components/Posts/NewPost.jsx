@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams,useOutletContext,useNavigate } from "react-router-dom";
+import { useState } from "react";
+import {useOutletContext,useNavigate } from "react-router-dom";
 import Errors from "../Errors"
 import Login from '../Users/Login.jsx';
 
@@ -52,15 +52,19 @@ export default function NewPost (){
         )
     }
     return (
-        <div className="content">
+        <div className="createPost">
             <h2>Create Post</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" id="title" value={title} onChange={handleTitleChange}/>
-                <label htmlFor="text">Text</label>
-                <textarea name="text" id="text" value={text} onChange={handleTextChange}/>
+                <div className="title">
+                    <label htmlFor="title">Title</label>
+                    <input type="text" name="title" id="title" value={title} onChange={handleTitleChange}/>
+                </div>
+                <div className="text">
+                    <label htmlFor="text">Text</label>
+                    <textarea name="text" id="text" value={text} onChange={handleTextChange}/>
+                </div>
                 <fieldset>
-                    <legend>Publish on submit? </legend>
+                    <legend>Publish this post? </legend>
                     <div>
                         <input type="radio" id="true" name="published" value="true" onChange={handlePublishChange}/>
                         <label htmlFor="true">Yes</label>
@@ -70,8 +74,10 @@ export default function NewPost (){
                         <label htmlFor="false">No</label>
                     </div>
                 </fieldset>
-                <button type="submit" >Submit</button>
-                <button type="button"onClick={handleCancel}>Cancel</button>
+                <div className="buttons">
+                    <button type="submit" >Submit</button>
+                    <button type="button"onClick={handleCancel}>Cancel</button>
+                </div>
             </form>
             <Errors errors={formErrors}/>
 
