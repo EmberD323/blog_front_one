@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link,useNavigate,useOutletContext } from "react-router-dom";
 
 export default function CommentCard ({comment,post}){
+    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
     const dateTime = new Date((Date.parse(comment.createdAt)))
     const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
     const time = dateTime.getHours()+":"+dateTime.getMinutes()
@@ -14,21 +15,22 @@ export default function CommentCard ({comment,post}){
         
     }
     async function handleCommentDelete(){
-        // const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id, {
-        //     method: "DELETE",
-        //     mode:"cors",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       "authorization": "Bearer " +token
-        //     },
-        // }); 
-        // if(response.status == 200){//succesful
-        //     setEdit(!edit);
-        //     navigate('../homepage');
-        // }
-        // else{
-        //     console.log(response)
-        // }
+        const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+post.id+"/comments/"+comment.id, {
+            method: "DELETE",
+            mode:"cors",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": "Bearer " +token
+            },
+        }); 
+        console.log(response)
+        if(response.status == 200){//succesful
+            setEdit(!edit);
+            navigate('../postpage/'+post.id);
+        }
+        else{
+            console.log(await response.json())
+        }
     }
     return (
         <li key={crypto.randomUUID()}>
