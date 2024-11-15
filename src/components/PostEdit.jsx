@@ -20,8 +20,6 @@ export default function PostEdit (){
     async function handleSubmit(e){
         e.preventDefault();
         //post to database
-        console.log(typeof published)
-        console.log(published)
         const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id, {
             method: "PUT",
             mode:"cors",
