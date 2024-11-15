@@ -150,3 +150,17 @@ input#title,textarea{
 .createPost>form>.text>textarea{
   height: 500px;
 }
+.signUp>form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px
+}
+.signUp>form>*{
+  display: flex;
+  justify-content: center;
+  gap:10px;
+}
+*:invalid{
+  border-color: red;
+}

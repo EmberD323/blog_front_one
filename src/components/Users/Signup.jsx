@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams,useOutletContext,useNavigate } from "react-router-dom";
+import {  useState } from "react";
+import {useNavigate } from "react-router-dom";
 import Errors from "../Errors"
 export default function SignUp (){
     const[first_name,setFirstName] = useState(null);
@@ -54,19 +54,29 @@ export default function SignUp (){
        
     }
     return (
-        <div className="content">
+        <div className="signUp">
             <h2>Sign up</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="first_name">First Name</label>
-                <input type="text" name="first_name" id="first_name" value={first_name} onChange={handleFirstNameChange} required/>
-                <label htmlFor="last_name">Last Name</label>
-                <input type="text" name="last_name" id="last_name" value={last_name} onChange={handleLastNameChange} required/>
-                <label htmlFor="username">Email</label>
-                <input type="email" name="username" id="username" value={username} onChange={handleUsernameChange} required/>
-                <label htmlFor="password">Password</label>
-                <input type="password" name="password" id="password" value={password} onChange={handlePasswordChange} required/>
-                <label htmlFor="passwordConfirm">Password</label>
-                <input type="password" name="passwordConfirm" id="passwordConfirm" value={passwordConfirm} onChange={handlePasswordConfirmChange} required/>
+                <div className="firstName">
+                    <label htmlFor="first_name">First Name</label>
+                    <input type="text" name="first_name" id="first_name" value={first_name} onChange={handleFirstNameChange} required/>
+                </div>
+                <div className="lastName">
+                    <label htmlFor="last_name">Last Name</label>
+                    <input type="text" name="last_name" id="last_name" value={last_name} onChange={handleLastNameChange} required/>
+                </div>
+                <div className="username">
+                    <label htmlFor="username">Email</label>
+                    <input type="email" name="username" id="username" value={username} onChange={handleUsernameChange} required/>
+                </div>
+                <div className="password">
+                    <label htmlFor="password">Password</label>
+                    <input type="password" name="password" id="password" value={password} onChange={handlePasswordChange} required/>
+                </div>
+                <div className="passportConfirm">
+                    <label htmlFor="passwordConfirm">Password</label>
+                    <input type="password" name="passwordConfirm" id="passwordConfirm" value={passwordConfirm} onChange={handlePasswordConfirmChange} required/>
+                </div>
                 <fieldset>
                     <legend>Sign up as an author? </legend>
                     <div>
