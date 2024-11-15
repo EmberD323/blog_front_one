@@ -54,7 +54,6 @@ export default function PostPage (){
             navigate('../postpage/'+id);
         }
 
-        
     }
     if(typeof token == "object"){
         return (
