@@ -10,9 +10,7 @@ export default function NewComment (){
     const[text,setText] = useState(null);
     const[formErrors,setFormErrors] = useState(null);
     const navigate = useNavigate()
-    function handleCancel(){
-        navigate('../postpage/'+postid);
-    }
+
     async function handleSubmit(e){
         e.preventDefault();
         const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+id+"/comments/", {
@@ -41,12 +39,11 @@ export default function NewComment (){
         setText(e.target.value)
     }
     return (
-        <div className="content">
+        <div className="formContainer">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="text">Text</label>
+                <label htmlFor="text">New comment:</label>
                 <textarea name="text" id="text" value={text} onChange={handleTextChange}/>
-                <button type="submit" >Submit</button>
-                <button type="button"onClick={handleCancel}>Cancel</button>
+                <button type="submit" >Comment</button>
             </form>
             <Errors errors={formErrors}/>
         </div>

@@ -55,7 +55,6 @@ a{
   flex-wrap: wrap;
   justify-content: center;
   gap:10px;
-  list-style-type: none;
   padding:10px;
 }
 .postCards>ul>li{
@@ -76,4 +75,62 @@ li.notPublished{
 }
 h2{
   color: var(--royal-blue-traditional);
+}
+.postpage>.post{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.post>.header{
+  display: flex;
+  align-items: center;
+  gap:20px;
+}
+.header>.buttons{
+  display: flex;
+  gap:5px
+}
+.post>.imgPlaceholder{
+  width: 300px;
+  height: 300px;
+  background-color: var(--slate-gray);
+}
+.post>.author,.post>.date,.commentCard>.authorAndDate{
+  font-size: 12px;
+}
+.post>.text{
+  font-size: 20px;
+}
+.formContainer>form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:5px;
+}
+.formContainer>form>textarea{
+  min-width: 300px
+}
+ul{
+  list-style-type: none;
+}
+.commentCards>ul{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:15px;
+}
+.commentCard{
+  background-color: rgb(231, 229, 229);
+  padding:10px;
+  min-width: 500px;
+
+}
+.commentCard>.buttons{
+  display: flex;
+  justify-content: flex-end;
+  gap:5px;
+}
+.commentCard>.authorAndDate{
+  display: flex;
+  gap:10px;
 }

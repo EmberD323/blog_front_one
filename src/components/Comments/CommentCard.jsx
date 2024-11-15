@@ -6,6 +6,7 @@ export default function CommentCard ({comment,post}){
     const dateTime = new Date((Date.parse(comment.createdAt)))
     const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
     const time = dateTime.getHours()+":"+dateTime.getMinutes()
+    const thisAuthor = users.filter((user)=>user.id == post.userId)[0];
     const navigate = useNavigate()
 
    
@@ -33,12 +34,18 @@ export default function CommentCard ({comment,post}){
         }
     }
     return (
-        <li key={crypto.randomUUID()}>
-                <div className="author">Authorid(need name - todo):{comment.userId}</div>
-                <div className="date">Created: {dayMonthYear} @ {time}</div>
-                <div className="text"> {comment.text}</div>
-                <button onClick={handleCommentEdit}>Edit</button>
-                <button onClick={handleCommentDelete}>Delete</button>
+        <li key={crypto.randomUUID()} className="commentCard">
+            <div className="buttons">
+                <button onClick={handleCommentEdit}><img width="15" height="15" src="https://img.icons8.com/ios-filled/50/0a2463/edit--v1.png" alt="edit--v1"/></button>
+                <button onClick={handleCommentDelete}><img width="15" height="15" src="https://img.icons8.com/ios-glyphs/30/0a2463/filled-trash.png" alt="filled-trash"/></button>
+            </div>
+            <div className="text"> {comment.text}</div>
+            <div className="authorAndDate">
+                <div className="author">{thisAuthor.first_name} {thisAuthor.last_name}</div>
+                <div className="date"> {dayMonthYear} @ {time}</div>
+            </div>
+            
+                
         </li>
     
     )
