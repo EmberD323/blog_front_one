@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useOutletContext,useParams,useNavigate } from "react-router-dom";
 import CommentCards from "../Comments/CommentCards";
+import NewComment from '../Comments/NewComment.jsx';
+
 
 export default function PostPage (){
     const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
@@ -62,7 +64,10 @@ export default function PostPage (){
                 <div className="author">Authorid(need name - todo):{thisPost.userId}</div>
                 <div className="date">Created: {dayMonthYear} @ {time}</div>
                 <div className="title">Text:{thisPost.text}</div>
-                
+                <h2 className="title">Comments:</h2>
+                <div className="commentCount">Number of comments: {thisPost.comments.length}</div>
+                <NewComment/>
+                <CommentCards comments={thisPost.comments} post={thisPost}></CommentCards>
 
             </div>
         )
@@ -80,6 +85,7 @@ export default function PostPage (){
             <div className="title">Text:{thisPost.text}</div>
             <h2 className="title">Comments:</h2>
             <div className="commentCount">Number of comments: {thisPost.comments.length}</div>
+            <NewComment/>
             <CommentCards comments={thisPost.comments} post={thisPost}></CommentCards>
             
         </div>
@@ -96,6 +102,10 @@ export default function PostPage (){
             <div className="date">Created: {dayMonthYear} @ {time}</div>
             <div className="published">Published: {String(thisPost.published)}</div>
             <div className="title">Text:{thisPost.text}</div>
+            <h2 className="title">Comments:</h2>
+            <div className="commentCount">Number of comments: {thisPost.comments.length}</div>
+            <NewComment/>
+            <CommentCards comments={thisPost.comments} post={thisPost}></CommentCards>
             
         </div>
     
