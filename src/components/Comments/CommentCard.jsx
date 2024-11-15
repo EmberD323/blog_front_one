@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link,useNavigate,useOutletContext } from "react-router-dom";
 
 export default function CommentCard ({comment,post}){
-    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
+    const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
     const dateTime = new Date((Date.parse(comment.createdAt)))
     const dayMonthYear = dateTime.getDay()+"/"+dateTime.getDate()+"/"+dateTime.getFullYear();
     const time = dateTime.getHours()+":"+dateTime.getMinutes()

@@ -4,7 +4,7 @@ import Errors from "../Errors"
 
 
 export default function NewComment (){
-    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
+    const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
     const { id } = useParams();
     const thisPost = (posts.filter((post) => post.id == id))[0];
     const[text,setText] = useState(null);

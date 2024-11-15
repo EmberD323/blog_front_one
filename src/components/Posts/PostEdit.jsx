@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
 import Errors from "../Errors"
+import Login from '../Users/Login.jsx';
 
 
 export default function PostEdit (){
-    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
+    const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
     const { id } = useParams();
     const thisPost = (posts.filter((post) => post.id == id))[0];
     const[title,setTitle] = useState(thisPost.title);
@@ -47,6 +48,11 @@ export default function PostEdit (){
     }
     function handlePublishChange(e){
         setPublished(e.target.value)
+    }
+    if(typeof token == "object"){
+        return (
+            <Login></Login>
+        )
     }
     return (
         <div className="content">

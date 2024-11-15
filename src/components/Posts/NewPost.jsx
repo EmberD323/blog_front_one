@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
 import Errors from "../Errors"
+import Login from '../Users/Login.jsx';
 
 
 export default function NewPost (){
-    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
+    const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
     const[title,setTitle] = useState(null);
     const[text,setText] = useState(null);
     const[published,setPublished] = useState(null);
@@ -44,6 +45,11 @@ export default function NewPost (){
     }
     function handlePublishChange(e){
         setPublished(e.target.value)
+    }
+    if(typeof token == "object"){
+        return (
+            <Login></Login>
+        )
     }
     return (
         <div className="content">

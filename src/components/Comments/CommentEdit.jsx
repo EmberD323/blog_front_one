@@ -4,7 +4,7 @@ import Errors from "../Errors"
 
 
 export default function CommentEdit (){
-    const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
+    const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
     const { postid,commentid } = useParams();
     const thisPost = (posts.filter((post) => post.id == postid))[0];
     const thisComment = (thisPost.comments.filter((comment) => comment.id == commentid))[0];

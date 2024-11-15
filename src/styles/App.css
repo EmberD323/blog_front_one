@@ -32,7 +32,6 @@ body{
   display: flex;
   gap:5px;
   align-items: center;
-
 }
 a{
   text-decoration: none; /* no underline */
@@ -46,4 +45,35 @@ a{
 }
 .user>button:hover {
   background: var(--slate-gray)
+}
+.homepage{
+  padding:10px;
+  
+}
+.postCards>ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap:10px;
+  list-style-type: none;
+  padding:10px;
+}
+.postCards>ul>li{
+  padding:25px;
+}
+li.published{
+  background-color: var(--pink);
+}
+li.notPublished{
+  background-color: var(--slate-gray);
+}
+.postCards>ul>li>a{
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+  color:rgb(34, 34, 34);
+  font-size: 15px;
+}
+h2{
+  color: var(--royal-blue-traditional);
 }
