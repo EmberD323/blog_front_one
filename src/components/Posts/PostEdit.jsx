@@ -55,7 +55,7 @@ export default function PostEdit (){
         )
     }
     return (
-        <div className="postEdit">
+        <div className="createPost">
             <h2>Edit Post</h2>
             <form onSubmit={handleSubmit}>
                 <div className="title">
