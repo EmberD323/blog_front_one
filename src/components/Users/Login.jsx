@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
-import Errors from "./Errors"
+import Errors from "../Errors"
 export default function Login (){
     const[username,setUsername] = useState(null);
     const[password,setPassword] = useState(null);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useOutletContext,useParams,useNavigate } from "react-router-dom";
-import CommentCards from "./CommentCards";
+import CommentCards from "../Comments/CommentCards";
 
 export default function PostPage (){
     const [posts,setPosts,token,setToken,edit,setEdit] = useOutletContext();
