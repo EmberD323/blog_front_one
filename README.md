@@ -1,15 +1,22 @@
-# React + Vite
-set up for testing
+# blog-front-one - Authors Access
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is one of the front-end websites for a projects for the Odin Project Blog API.
+Which builds a backend and  for two different front-ends for accessing and editing blog posts.
 
-Currently, two official plugins are available:
+# Deployed
+- Authors acess website deployed:https://blog-author-website.netlify.app/
+- General access website deployed:https://blog-general-website.netlify.app
+# Github
+- Backend github: https://github.com/EmberD323/blog-api-backend
+- General access github:https://github.com/EmberD323/blog_front_two
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
+- Post Management: Create, update, delete, publish, or unpublish blog posts and comments.
+- State Management: Context API for managing user roles and session information.
 
-1)npm install
-2)npm run dev http://localhost:5173/
+## Tech Stack
 
-# this is authors front end - full access
+- **Framework**: React, using Vite.
+- **Styling**: CSS
+
