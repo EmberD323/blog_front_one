@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Link,useNavigate,useOutletContext } from "react-router-dom";
+import { useNavigate,useOutletContext } from "react-router-dom";
 
 export default function CommentCard ({comment,post}){
     const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
@@ -9,7 +8,6 @@ export default function CommentCard ({comment,post}){
     const thisAuthor = users.filter((user)=>user.id == post.userId)[0];
     const navigate = useNavigate()
 
-   
     async function handleCommentEdit(){
         //navigate to edit
         navigate('../postpage/'+post.id+'/commentedit/'+comment.id);
@@ -44,10 +42,7 @@ export default function CommentCard ({comment,post}){
                 <div className="author">{thisAuthor.first_name} {thisAuthor.last_name}</div>
                 <div className="date"> {dayMonthYear} @ {time}</div>
             </div>
-            
-                
         </li>
-    
     )
 }
 

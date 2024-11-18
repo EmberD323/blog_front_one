@@ -36,7 +36,6 @@ function NavBar({token,setToken}) {
                         <div>Create Post</div>
                         <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/0a2463/add--v1.png" alt="add--v1"/>
                     </Link>
-
                 </div>
                 <h1 className="heading">Blog Name</h1>
                 <div className="user">
@@ -44,8 +43,6 @@ function NavBar({token,setToken}) {
                 </div>
             </div>
         )
-        
-
     }
 }
 

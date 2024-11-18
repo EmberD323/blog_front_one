@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import { useParams,useOutletContext,useNavigate } from "react-router-dom";
-import Errors from "../Errors"
+import { useState } from "react";
+import { useOutletContext,useNavigate } from "react-router-dom";
+import Errors from "../Partials/Errors"
 export default function Login (){
     const[username,setUsername] = useState(null);
     const[password,setPassword] = useState(null);
     const[formErrors,setFormErrors] = useState(null);
     const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
-
 
     function handleUsernameChange(e){
         setUsername(e.target.value)
@@ -28,13 +27,11 @@ export default function Login (){
             });        
             if(response.status != 200){
                 const json = await response.json();
-                console.log(json.errors)
                 setFormErrors(json.errors)
             }else{ 
                 const json = await response.json();
                 const thisToken = json.token;
                 const user = json.user;
-                console.log(user);
                 if(user.author != true){
                     let error=[{msg:"You must have a author account to log in"}]
                     setFormErrors(error)

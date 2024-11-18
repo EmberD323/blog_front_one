@@ -1,6 +1,6 @@
 import {  useState } from "react";
 import {useNavigate } from "react-router-dom";
-import Errors from "../Errors"
+import Errors from "../Partials/Errors"
 export default function SignUp (){
     const[first_name,setFirstName] = useState(null);
     const[last_name,setLastName] = useState(null);
@@ -43,15 +43,12 @@ export default function SignUp (){
             if(response.status != 200){
                 const json = await response.json();
                 setFormErrors(json.errors)
-                
             }else{ 
                 navigate('../login');
             }
           } catch (er) {
             console.error(er);
           }
-
-       
     }
     return (
         <div className="signUp">
@@ -92,7 +89,6 @@ export default function SignUp (){
             </form>
             <Errors errors={formErrors}/>
         </div>
-    
     )
 }
 

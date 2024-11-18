@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import CommentCard from "./CommentCard.jsx";
 
 export default function CommentCards ({comments, post}){

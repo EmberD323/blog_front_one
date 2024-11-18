@@ -1,8 +1,7 @@
 import { useState } from "react";
 import {useOutletContext,useNavigate } from "react-router-dom";
-import Errors from "../Errors"
+import Errors from "../Partials/Errors"
 import Login from '../Users/Login.jsx';
-
 
 export default function NewPost (){
     const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
@@ -10,8 +9,8 @@ export default function NewPost (){
     const[text,setText] = useState(null);
     const[published,setPublished] = useState(null);
     const[formErrors,setFormErrors] = useState(null);
-
     const navigate = useNavigate()
+
     function handleCancel(){
         navigate('../homepage/');
     }
@@ -80,7 +79,6 @@ export default function NewPost (){
                 </div>
             </form>
             <Errors errors={formErrors}/>
-
         </div>
     )
 }

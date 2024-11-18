@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
-import Errors from "../Errors"
-
+import Errors from "../Partials/Errors"
 
 export default function NewComment (){
     const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
     const { id } = useParams();
-    const thisPost = (posts.filter((post) => post.id == id))[0];
     const[text,setText] = useState(null);
     const[formErrors,setFormErrors] = useState(null);
     const navigate = useNavigate()
@@ -29,7 +27,6 @@ export default function NewComment (){
         else{//reload posts and leave edit page
             setText("");
             setEdit(!edit);
-            
             //clear form
             navigate('../postpage/'+id);
         }

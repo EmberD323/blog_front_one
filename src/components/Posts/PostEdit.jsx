@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
-import Errors from "../Errors"
+import Errors from "../Partials/Errors"
 import Login from '../Users/Login.jsx';
-
 
 export default function PostEdit (){
     const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
@@ -12,9 +11,8 @@ export default function PostEdit (){
     const[text,setText] = useState(thisPost.text);
     const[published,setPublished] = useState(thisPost.published);
     const[formErrors,setFormErrors] = useState(null);
-
-
     const navigate = useNavigate()
+
     function handleCancel(){
         navigate('../postpage/'+id);
     }
@@ -38,7 +36,6 @@ export default function PostEdit (){
             setEdit(!edit);
             navigate('../postpage/'+id);
         }
-
     }
     function handleTitleChange(e){
         setTitle(e.target.value)

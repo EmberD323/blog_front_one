@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useParams,useOutletContext,useNavigate } from "react-router-dom";
-import Errors from "../Errors"
-
+import Errors from "../Partials/Errors"
 
 export default function CommentEdit (){
     const [posts,setPosts,token,setToken,edit,setEdit,users,setUsers] = useOutletContext();
@@ -16,7 +15,6 @@ export default function CommentEdit (){
     }
     async function handleSubmit(e){
         e.preventDefault();
-        //post to database/:postid/comments/:commentid
         const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+postid+"/comments/"+commentid, {
             method: "PUT",
             mode:"cors",
@@ -32,11 +30,9 @@ export default function CommentEdit (){
             setFormErrors(errors)
         }
         else{//reload posts and leave edit page
-         
             setEdit(!edit);
             navigate('../postpage/'+postid);
         }
-
     }
     function handleTextChange(e){
         setText(e.target.value)

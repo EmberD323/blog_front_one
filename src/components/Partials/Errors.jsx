@@ -1,5 +1,3 @@
-
-
 export default function Errors ({errors}){
     if(errors == null){
         return
@@ -12,7 +10,6 @@ export default function Errors ({errors}){
                 })}
             </ul>
         </div>
-    
     )
 }
 

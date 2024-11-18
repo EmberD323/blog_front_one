@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link,useOutletContext,useNavigate } from "react-router-dom";
 
 export default function PostCard ({post}){
@@ -10,7 +9,6 @@ export default function PostCard ({post}){
     const navigate = useNavigate()
 
     async function handlePostPublish(){
-
         const response = await fetch("https://blog-api-backend-59l7.onrender.com/posts/"+post.id, {
             method: "PUT",
             mode:"cors",
@@ -28,7 +26,6 @@ export default function PostCard ({post}){
             setEdit(!edit);
             navigate('../homepage');
         }
-
     }
 
     if(post.published == true){
@@ -39,6 +36,7 @@ export default function PostCard ({post}){
                 <div className="author">Author: {thisAuthor.first_name} {thisAuthor.last_name}</div>
                 <div className="date">Created: {dayMonthYear}</div>
                 <div className="commentCount">{post.comments.length} comments</div>
+
             </Link>
         </li>
         )
